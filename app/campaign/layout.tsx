@@ -33,12 +33,6 @@ export default function CampaignLayout({ children }: { children: React.ReactNode
             Back
           </a>
           <div className="flex items-center gap-4">
-            <Link
-              href="/inbox"
-              className="text-xl font-medium text-black px-2 py-1.5 border-2 border-black rounded-xl  hover:bg-black/10 transition cursor-pointer"
-            >
-              Inbox
-            </Link>
           </div>
         </div>
         <div className="relative z-10 mb-10 flex flex-col items-center justify-center font-['Google Sans Flex'] ">

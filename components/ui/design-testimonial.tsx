@@ -1,33 +1,35 @@
 "use client"
 
+import type React from "react"
+
 import { useState, useEffect, useRef } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion"
 
 const steps = [
   {
     title: "Create your Campaign",
-    description: "Add a campaign title and description to define your outreach goal.",
+    description: "Add a campaign title and description to define your outreach goal."
   },
   {
     title: "Choose Communication Channels",
-    description: "Select how you want to reach users—text messages, voice messages, or calls.",
+    description: "Select how you want to reach users—text messages, voice messages, or calls."
   },
   {
     title: "Upload Assets",
-    description: "Add media, creatives, or supporting files to personalize your campaign.",
+    description: "Add media, creatives, or supporting files to personalize your campaign."
   },
   {
     title: "Attach Documents",
-    description: "Upload PDFs or documents you want to share with your audience.",
+    description: "Upload PDFs or documents you want to share with your audience."
   },
   {
     title: "Add Contacts",
-    description: "Upload or select contacts to include in your campaign.",
+    description: "Upload or select contacts to include in your campaign."
   },
   {
     title: "Preview and Launch",
-    description: "Review the complete campaign experience before going live.",
-  },
+    description: "Review the complete campaign experience before going live."
+  }
 ]
 
 export function Testimonial() {
@@ -66,7 +68,10 @@ export function Testimonial() {
   return (
     <div className="flex items-start justify-start min-h-screen bg-black overflow-hidden w-[85vw] mt-10">
       <div ref={containerRef} className="relative w-full max-w-full">
-        <motion.div className="absolute -left-4 md:-left-12 top-1/2 -translate-y-1/2 text-[15vw] md:text-[28rem]  text-white/5 select-none pointer-events-none leading-none tracking-tighter ml-5 md:ml-10">
+        {/* Oversized index number */}
+        <motion.div
+          className="absolute -left-4 md:-left-12 top-1/2 -translate-y-1/2 text-[15vw] md:text-[28rem]  text-white/5 select-none pointer-events-none leading-none tracking-tighter ml-5 md:ml-10"
+        >
           <AnimatePresence mode="wait">
             <motion.span
               key={activeIndex}
@@ -81,7 +86,9 @@ export function Testimonial() {
           </AnimatePresence>
         </motion.div>
 
+        {/* Main content */}
         <div className="relative flex flex-col lg:flex-row gap-8 lg:gap-0">
+          {/* Left column - vertical text (hidden on mobile) */}
           <div className="hidden lg:flex flex-col items-center justify-center pr-16 border-r border-white/10 min-h-[550px]">
             <motion.span
               className="text-xs font-mono text-white/60 tracking-widest uppercase"
@@ -93,6 +100,7 @@ export function Testimonial() {
               Campaign Steps
             </motion.span>
 
+            {/* Vertical progress line */}
             <div className="relative h-40 w-px bg-white/10 mt-8">
               <motion.div
                 className="absolute top-0 left-0 w-full bg-white origin-top"
@@ -104,7 +112,9 @@ export function Testimonial() {
             </div>
           </div>
 
+          {/* Center - main content */}
           <div className="flex-1 lg:pl-16 py-12 lg:py-16">
+            {/* Step counter badge */}
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeIndex}
@@ -121,6 +131,7 @@ export function Testimonial() {
               </motion.div>
             </AnimatePresence>
 
+            {/* Title */}
             <div className="relative mb-8 lg:mb-12 min-h-[80px] lg:min-h-[140px]">
               <AnimatePresence mode="wait">
                 <motion.h2
@@ -160,6 +171,7 @@ export function Testimonial() {
               </AnimatePresence>
             </div>
 
+            {/* Description */}
             <div className="relative mb-10 lg:mb-16 min-h-[60px] lg:min-h-[90px]">
               <AnimatePresence mode="wait">
                 <motion.p
@@ -175,6 +187,7 @@ export function Testimonial() {
               </AnimatePresence>
             </div>
 
+            {/* Navigation */}
             <div className="flex items-center justify-between md:justify-start gap-6">
               <motion.button
                 onClick={goPrev}
@@ -230,6 +243,7 @@ export function Testimonial() {
                 </svg>
               </motion.button>
 
+              {/* Progress dots */}
               <div className="flex items-center gap-2 ml-auto md:ml-4">
                 {steps.map((_, i) => (
                   <motion.button
@@ -246,6 +260,7 @@ export function Testimonial() {
           </div>
         </div>
 
+        {/* Bottom ticker - OutreachX only */}
         <div className="absolute -bottom-6 md:-bottom-10 left-0 overflow-hidden opacity-[0.15] pointer-events-none hidden md:block">
           <motion.div
             className="flex whitespace-nowrap text-4xl md:text-5xl lg:text-6xl  tracking-tighter"

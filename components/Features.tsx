@@ -1,5 +1,3 @@
-'use client'
-
 import React, { useRef, useEffect, useState } from 'react'
 
 const LazyVideo = ({ src }: { src: string }) => {
@@ -54,6 +52,7 @@ const FeatureSection = ({
     <div className="w-full bg-black py-12 px-4 md:px-8 lg:px-16  mb-25 mt-20">
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 items-center">
+          {/* Left side - Text content */}
           <div className="flex flex-col justify-center max-w-md">
             <div className="flex items-center gap-2 mb-4">
               <div className="w-6 h-6 rounded border border-white/30 flex items-center justify-center shrink-0">
@@ -68,11 +67,11 @@ const FeatureSection = ({
               {title}
             </h2>
 
-            <p className="text-white/60 text-sm md:text-base leading-relaxed font-sans">
-              {description}
-            </p>
+            <p className="text-white/60 text-sm md:text-base leading-relaxed font-sans">{description}</p>
+
           </div>
 
+          {/* Right side - Video */}
           <div className="flex items-center justify-center lg:justify-end">
             <div className="w-full max-w-md rounded-xl overflow-hidden border border-white/10 shadow-lg bg-black/50">
               <LazyVideo src={videoSrc} />

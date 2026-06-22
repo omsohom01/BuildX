@@ -140,10 +140,11 @@ export default function PreviewPage() {
             {isRegenerating ? '⟳ Regenerating...' : 'Regenerate'}
           </button>
           <button
-            onClick={handleLaunch}
-            className="px-6 py-2.5 rounded-lg bg-white hover:bg-white/95 text-black font-semibold transition shadow-[0_4px_12px_rgba(255,255,255,0.2)] cursor-pointer"
+            disabled
+            title="Launch is not available yet"
+            className="px-6 py-2.5 rounded-lg bg-white/20 text-white/50 font-semibold transition cursor-not-allowed opacity-50"
           >
-            Done
+            🚀 Launch
           </button>
         </div>
       </div>

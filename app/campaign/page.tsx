@@ -1,7 +1,6 @@
 'use client'
 
 import React, { useState, useRef } from 'react'
-import { useAuth } from '@clerk/nextjs'
 import { useRouter } from 'next/navigation'
 
 interface CampaignFormData {
@@ -24,15 +23,7 @@ interface CampaignPreview {
 }
 
 const CampaignPage = () => {
-  const { isSignedIn } = useAuth()
   const router = useRouter()
-
-  // Redirect if not signed in
-  React.useEffect(() => {
-    if (!isSignedIn) {
-      router.push('/')
-    }
-  }, [isSignedIn, router])
 
   // Form state
   const [formData, setFormData] = useState<CampaignFormData>({
@@ -213,12 +204,10 @@ const CampaignPage = () => {
   const handleDone = () => {
     // TODO: Send to backend
     alert('Campaign created! Contacts: ' + formData.contacts.length)
-    router.push('/inbox')
+    router.push('/')
   }
 
-  if (!isSignedIn) {
-    return null
-  }
+
 
   return (
     <div className="min-h-screen  text-slate-100">
@@ -236,13 +225,6 @@ const CampaignPage = () => {
           </div>
 
           <div className="flex items-center gap-3">
-            <button
-              onClick={() => router.push('/inbox')}
-              className="hidden md:inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 text-xs text-slate-300 hover:bg-white/5 transition"
-            >
-              <span className="text-lg">📨</span>
-              Inbox
-            </button>
             <div className="h-8 w-8 rounded-full bg-slate-800" />
           </div>
         </div>

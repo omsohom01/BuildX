@@ -1,8 +1,9 @@
-import { initializeApp } from "firebase/app";
-import { getAnalytics, Analytics } from "firebase/analytics";
-import { getAuth, Auth } from "firebase/auth";
-import { getFirestore, Firestore } from "firebase/firestore";
-import { getStorage, FirebaseStorage } from "firebase/storage";
+// Commented out to prevent build issues since firebase dependency is not installed.
+// import { initializeApp } from "firebase/app";
+// import { getAnalytics, Analytics } from "firebase/analytics";
+// import { getAuth, Auth } from "firebase/auth";
+// import { getFirestore, Firestore } from "firebase/firestore";
+// import { getStorage, FirebaseStorage } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -15,17 +16,14 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+const app = null;
 
 // Initialize services
-export const auth: Auth = getAuth(app);
-export const db: Firestore = getFirestore(app);
-export const storage: FirebaseStorage = getStorage(app);
+export const auth: any = null;
+export const db: any = null;
+export const storage: any = null;
 
-// Initialize Analytics (only on client side)
-let analytics: Analytics | null = null;
-if (typeof window !== "undefined") {
-  analytics = getAnalytics(app);
-}
+// Initialize Analytics
+let analytics: any = null;
 
 export { analytics, app };
